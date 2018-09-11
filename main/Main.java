@@ -5,12 +5,8 @@
  */
 package main;
 
-import controller.AdicionaProdutoController;
-import controller.EditaProdutoController;
-import controller.ListaProdutoController;
-import model.Produto;
-import view.TelaProduto;
-import view.TelaProdutoLista;
+import controller.InicioController;
+import view.TelaInicial;
 
 /**
  *
@@ -20,8 +16,8 @@ public class Main {
     
     public static void main(String[] args) {
         
-        TelaProdutoLista theView = new TelaProdutoLista();
-        ListaProdutoController theController = new ListaProdutoController(theView);
+        TelaInicial theView = new TelaInicial();
+        InicioController theController = new InicioController(theView);
         theView.setLocationRelativeTo(null);
         theView.setVisible(true);
         

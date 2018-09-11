@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author snow
@@ -93,6 +95,10 @@ public class TelaInicial extends javax.swing.JFrame {
                 new TelaInicial().setVisible(true);
             }
         });
+    }
+    
+    public void addBotaoAreaProdutoEventListener(ActionListener listener) {
+        this.btnAreaProduto.addActionListener(listener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,6 +7,8 @@ package view;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 
 /**
@@ -31,6 +33,9 @@ public class TelaProdutoLista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Opcoes = new javax.swing.JPopupMenu();
+        Excluir = new javax.swing.JMenuItem();
+        Alterar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProduto = new javax.swing.JTable();
@@ -38,6 +43,12 @@ public class TelaProdutoLista extends javax.swing.JFrame {
         btnAdicionarProduto = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnAtualizaLista = new javax.swing.JButton();
+
+        Excluir.setText("jMenuItem1");
+        Opcoes.add(Excluir);
+
+        Alterar.setText("jMenuItem1");
+        Opcoes.add(Alterar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,11 +88,13 @@ public class TelaProdutoLista extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(159, 159, 159)
-                                .addComponent(jLabel2)))
-                        .addGap(34, 34, 34)
+                                .addGap(183, 183, 183)
+                                .addComponent(jLabel1)
+                                .addGap(86, 86, 86))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(53, 53, 53)))
                         .addComponent(btnAtualizaLista)
                         .addGap(0, 51, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -150,7 +163,19 @@ public class TelaProdutoLista extends javax.swing.JFrame {
     
     // get para retornar a tabela
     public JTable getTabela() {
-        return tabelaProduto;
+        return this.tabelaProduto;
+    }
+    
+    public JPopupMenu getPopupMenu() {
+        return this.Opcoes;
+    }
+    
+    public JMenuItem getMenuItemExcluir() {
+        return this.Excluir;
+    }
+    
+    public JMenuItem getMenuItemAlterar() {
+        return this.Alterar;
     }
     
     // métodos de ação dos botões
@@ -165,9 +190,13 @@ public class TelaProdutoLista extends javax.swing.JFrame {
     public void addBtnAtualizaListaListener(ActionListener listener) {
         this.btnAtualizaLista.addActionListener(listener);
     }
+    
             
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Alterar;
+    private javax.swing.JMenuItem Excluir;
+    private javax.swing.JPopupMenu Opcoes;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnAtualizaLista;
     private javax.swing.JButton btnVoltar;
