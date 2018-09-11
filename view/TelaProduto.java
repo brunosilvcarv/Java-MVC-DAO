@@ -179,6 +179,19 @@ public class TelaProduto extends javax.swing.JFrame {
         return campoValor.getText();
     }
     
+    // sets dos campos de texto
+    public void setCampoProduto(String texto) {
+        this.campoProduto.setText(texto);
+    }
+    
+    public void setCampoQuantidade(String texto) {
+        this.campoQuantidade.setText(texto);
+    }
+    
+    public void setCampoValor(String texto) {
+        this.campoValor.setText(texto);
+    }
+    
     // gets dos botoes
     public JButton getBtnAlterar() {
         return this.btnAlterar;
@@ -192,18 +205,6 @@ public class TelaProduto extends javax.swing.JFrame {
         return this.btnAdicionar;
     }
     
-    // sets dos campos de texto
-    public void setCampoProduto(String s) {
-        this.campoProduto.setText(s);
-    }
-    
-    public void setCampoQuantidade(String s) {
-        this.campoQuantidade.setText(s);
-    }
-    
-    public void setCampoValor(String s) {
-        this.campoValor.setText(s);
-    }
     
     // métodos de ação dos botoes
     public void addBtnAdicionarListener(ActionListener listener) {

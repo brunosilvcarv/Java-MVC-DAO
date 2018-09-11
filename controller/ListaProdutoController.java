@@ -37,6 +37,7 @@ public class ListaProdutoController {
         theView.addBtnAdicionaProdutoListener(new RedirecionaParaTelaProduto());
         theView.addBtnAtualizaListaListener(new ListaProduto());
         theView.addClicaProdutoListener(new AbrePaginaProduto());
+        theView.addBtnVoltarListener(new VoltaTelaInicial());
         theView.setVisible(true);
     }
     
@@ -105,6 +106,15 @@ public class ListaProdutoController {
             new AdicionaProdutoController(telaProduto);
             telaProduto.setLocationRelativeTo(null);
             telaProduto.setVisible(true);
+        }
+        
+    }
+    
+    class VoltaTelaInicial implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            theView.dispose();
         }
         
     }

@@ -54,8 +54,14 @@ public class AdicionaProdutoController {
                 ProdutoDAO dao = new ProdutoDAO();
                 boolean adicionou = dao.addProduto(produto);
                 if (adicionou) {
-                    JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso!");
-                    theView.dispose();
+                    int resposta = JOptionPane.showConfirmDialog(null, "Deseja adicionar outro produto?", null ,JOptionPane.YES_NO_OPTION);
+                    if(resposta == JOptionPane.NO_OPTION) {
+                        theView.dispose();
+                    } else {
+                        theView.setCampoProduto("");
+                        theView.setCampoQuantidade("");
+                        theView.setCampoValor("");
+                    }
                     //limpar campos, após dispose.
                 } else {
                     JOptionPane.showMessageDialog(null, "Falha ao adicionar produto!");

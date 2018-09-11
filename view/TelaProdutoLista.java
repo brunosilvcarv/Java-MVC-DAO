@@ -191,6 +191,10 @@ public class TelaProdutoLista extends javax.swing.JFrame {
         this.btnAtualizaLista.addActionListener(listener);
     }
     
+    public void addBtnVoltarListener(ActionListener listener) {
+        this.btnVoltar.addActionListener(listener);
+    }
+    
             
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
