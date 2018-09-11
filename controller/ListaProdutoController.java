@@ -6,7 +6,6 @@
 package controller;
 
 import dao.ProdutoDAO;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -14,10 +13,6 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 import model.Produto;
 import view.TableModelProdutos;
 import view.TelaProduto;
@@ -31,13 +26,16 @@ public class ListaProdutoController {
     
     TelaProdutoLista theView;
     Produto produto;
+    int linha;
     
     public ListaProdutoController(TelaProdutoLista theView) {
         this.theView = theView;
         theView.addBtnAdicionaProdutoListener(new RedirecionaParaTelaProduto());
         theView.addBtnAtualizaListaListener(new ListaProduto());
-        theView.addClicaProdutoListener(new AbrePaginaProduto());
+        theView.addClicaProdutoListener(new AcaoMenuItens());
         theView.addBtnVoltarListener(new VoltaTelaInicial());
+        theView.addAcaoMenuItemExcluir(new AcaoMenuItemExcluir());
+        theView.addAcaoMenuItemAlterar(new AcaoMenuItemAlterar());
         theView.setVisible(true);
     }
     
@@ -65,17 +63,19 @@ public class ListaProdutoController {
     }
     
     //para a ação de mostrar PopUpMenu ou redirecionar para TelaProduto
-    class AbrePaginaProduto implements MouseListener {
-
+    class AcaoMenuItens implements MouseListener {
+        
+        
         @Override
         public void mouseClicked(MouseEvent e) {
-            System.out.println("oi");
+            
+            System.out.println("tabela clicada");
                 theView.getMenuItemExcluir().setText("Excluir");
                 theView.getMenuItemAlterar().setText("Alterar");
                 theView.getPopupMenu().show(theView, e.getX(), e.getY());
-            System.out.println(theView.getTabela().getSelectionModel());
-                
-                
+            linha = theView.getTabela().getSelectedRow();
+            System.out.println("linha: "+linha);
+            
         }
 
         @Override
@@ -118,5 +118,25 @@ public class ListaProdutoController {
         }
         
     }
+    
+    class AcaoMenuItemExcluir implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("excluir pressionado");
+        }
+        
+    }
+    
+    class AcaoMenuItemAlterar implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("alterar pressionado");
+            
+        }
+        
+    }
+   
     
 }
