@@ -27,8 +27,8 @@ public class ListaProdutoController {
     
     TelaProdutoLista theView;
     Produto produto;
+    Produto p = new Produto();
     int linha;
-    int id;
     
     public ListaProdutoController(TelaProdutoLista theView) {
         this.theView = theView;
@@ -50,7 +50,7 @@ public class ListaProdutoController {
         //pega o id do objeto representado na linha selecionada
         int idp = modelo.getObjetoId(linha);
         //passa para esta classe o id adquirido
-        this.id = idp;
+        p.setIdProduto(idp);
     }
     
     public void carregaTabela() throws SQLException {
@@ -145,7 +145,7 @@ public class ListaProdutoController {
                 try {
                 ProdutoDAO dao = new ProdutoDAO();
                 pegaIdPelaTabela();
-                boolean excluiu = dao.delProduto(id);
+                boolean excluiu = dao.delProduto(p.getIdProduto());
                 if(excluiu) {
                     System.out.println("excluido com sucesso");
                     
@@ -169,7 +169,10 @@ public class ListaProdutoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("alterar pressionado");
-            
+            TelaProduto telaProduto = new TelaProduto();
+            new EditaProdutoController(telaProduto);
+            telaProduto.setLocationRelativeTo(null);
+            telaProduto.setVisible(true);
         }
         
     }
