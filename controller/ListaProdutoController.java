@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Produto;
 import view.TableModelProdutos;
 import view.TelaProduto;
@@ -27,6 +28,7 @@ public class ListaProdutoController {
     TelaProdutoLista theView;
     Produto produto;
     int linha;
+    int id;
     
     public ListaProdutoController(TelaProdutoLista theView) {
         this.theView = theView;
@@ -37,6 +39,18 @@ public class ListaProdutoController {
         theView.addAcaoMenuItemExcluir(new AcaoMenuItemExcluir());
         theView.addAcaoMenuItemAlterar(new AcaoMenuItemAlterar());
         theView.setVisible(true);
+    }
+    
+    public void pegaIdPelaTabela() throws SQLException {
+        ProdutoDAO dao = new ProdutoDAO();
+        //faz a consulta
+        TableModelProdutos modelo = new TableModelProdutos(dao.consultaProduto(produto));
+        //checa a linha selecionada
+        linha = theView.getTabela().getSelectedRow();
+        //pega o id do objeto representado na linha selecionada
+        int idp = modelo.getObjetoId(linha);
+        //passa para esta classe o id adquirido
+        this.id = idp;
     }
     
     public void carregaTabela() throws SQLException {
@@ -74,8 +88,7 @@ public class ListaProdutoController {
                 theView.getMenuItemAlterar().setText("Alterar");
                 theView.getPopupMenu().show(theView, e.getX(), e.getY());
             linha = theView.getTabela().getSelectedRow();
-            System.out.println("linha: "+linha);
-            
+            System.out.println("linha: "+linha);            
         }
 
         @Override
@@ -124,8 +137,31 @@ public class ListaProdutoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("excluir pressionado");
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este produto?",
+                   null, JOptionPane.YES_NO_OPTION);
+            
+            if(resposta == JOptionPane.YES_OPTION) {
+                
+                try {
+                ProdutoDAO dao = new ProdutoDAO();
+                pegaIdPelaTabela();
+                boolean excluiu = dao.delProduto(id);
+                if(excluiu) {
+                    System.out.println("excluido com sucesso");
+                    
+                } else {
+                    System.out.println("Deu ruim!");
+                }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ListaProdutoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } else if(resposta == JOptionPane.NO_OPTION) {
+                System.out.println("não excluiu... :D");
+            }
+            
         }
-        
     }
     
     class AcaoMenuItemAlterar implements ActionListener {

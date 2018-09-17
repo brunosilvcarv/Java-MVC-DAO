@@ -23,6 +23,10 @@ public class TableModelProdutos extends AbstractTableModel{
     public TableModelProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
+
+    public TableModelProdutos() {
+    }
+    
     
     @Override
     public int getRowCount() {
@@ -46,6 +50,7 @@ public class TableModelProdutos extends AbstractTableModel{
     }
     
     
+    @Override
     public String getColumnName(int coluna) {
         switch(coluna) {
             case 0: return "Descrição";
@@ -55,5 +60,8 @@ public class TableModelProdutos extends AbstractTableModel{
         return null;
     }
     
-    
+    public int getObjetoId(int linha) {
+        produto = produtos.get(linha);
+        return produto.getIdProduto();
+    }
 }

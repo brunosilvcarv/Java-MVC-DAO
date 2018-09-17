@@ -54,7 +54,8 @@ public class AdicionaProdutoController {
                 ProdutoDAO dao = new ProdutoDAO();
                 boolean adicionou = dao.addProduto(produto);
                 if (adicionou) {
-                    int resposta = JOptionPane.showConfirmDialog(null, "Deseja adicionar outro produto?", null ,JOptionPane.YES_NO_OPTION);
+                    int resposta = JOptionPane.showConfirmDialog(null, "Produto adicionado com sucesso!\nDeseja adicionar outro produto?", 
+                            null ,JOptionPane.YES_NO_OPTION);
                     if(resposta == JOptionPane.NO_OPTION) {
                         theView.dispose();
                     } else {

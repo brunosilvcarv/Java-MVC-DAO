@@ -74,8 +74,10 @@ public class ProdutoDAO {
             conexao.close();
             return true;
         } catch (SQLException ex) {
+            //System.out.println(ex.getMessage());
             throw new RuntimeException(ex);
-        }
+        } 
+        //return false;
     }
    
     public List<Produto> consultaProduto(Produto p) {
