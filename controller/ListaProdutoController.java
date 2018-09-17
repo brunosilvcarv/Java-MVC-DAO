@@ -41,7 +41,7 @@ public class ListaProdutoController {
         theView.setVisible(true);
     }
     
-    public void pegaIdPelaTabela() throws SQLException {
+    public void pegaObjetoPelaTabela() throws SQLException {
         ProdutoDAO dao = new ProdutoDAO();
         //faz a consulta
         TableModelProdutos modelo = new TableModelProdutos(dao.consultaProduto(produto));
@@ -144,7 +144,7 @@ public class ListaProdutoController {
                 
                 try {
                 ProdutoDAO dao = new ProdutoDAO();
-                pegaIdPelaTabela();
+                pegaObjetoPelaTabela();
                 boolean excluiu = dao.delProduto(p.getIdProduto());
                 if(excluiu) {
                     System.out.println("excluido com sucesso");
