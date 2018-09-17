@@ -48,9 +48,9 @@ public class ListaProdutoController {
         //checa a linha selecionada
         linha = theView.getTabela().getSelectedRow();
         //pega o id do objeto representado na linha selecionada
-        int idp = modelo.getObjetoId(linha);
+        produto = modelo.getObjeto(linha);
         //passa para esta classe o id adquirido
-        p.setIdProduto(idp);
+        p.setIdProduto(produto.getIdProduto());
     }
     
     public void carregaTabela() throws SQLException {
