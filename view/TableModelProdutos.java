@@ -60,8 +60,8 @@ public class TableModelProdutos extends AbstractTableModel{
         return null;
     }
     
-    public int getObjetoId(int linha) {
+    public Produto getObjeto(int linha) {
         produto = produtos.get(linha);
-        return produto.getIdProduto();
+        return produto;
     }
 }
