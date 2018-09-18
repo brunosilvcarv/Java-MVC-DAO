@@ -26,7 +26,6 @@ public class AdicionaProdutoController {
     public AdicionaProdutoController(TelaProduto theView) {
         this.theView = theView;
         theView.getBtnAlterar().setVisible(false);
-        theView.getBtnExcluir().setVisible(false);
         theView.addBtnAdicionarListener(new AdicionaProdutoEventListener());
         theView.addBtnVoltar(new Voltar());
         theView.setVisible(true);

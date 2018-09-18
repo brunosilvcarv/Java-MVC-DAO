@@ -20,6 +20,5 @@ public class Main {
         InicioController theController = new InicioController(theView);
         theView.setLocationRelativeTo(null);
         theView.setVisible(true);
-        
     }
 }

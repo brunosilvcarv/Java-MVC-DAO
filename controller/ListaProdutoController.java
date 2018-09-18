@@ -49,8 +49,23 @@ public class ListaProdutoController {
         linha = theView.getTabela().getSelectedRow();
         //pega o id do objeto representado na linha selecionada
         produto = modelo.getObjeto(linha);
-        //passa para esta classe o id adquirido
+        //passa para esta classe o id adquirido e demais atributos para
+        // serem usados na alteração do produto
         p.setIdProduto(produto.getIdProduto());
+        p.setDescricao(produto.getDescricao());
+        p.setQuantidade(produto.getQuantidade());
+        p.setValor(produto.getValor());
+        //somente para testes
+        detalhesDoProduto();
+    }
+    
+    //somente para testes
+    public void detalhesDoProduto(){
+        System.out.println("Produto: ");
+        System.out.println("id-> "+this.p.getIdProduto());
+        System.out.println("descricao-> "+this.p.getDescricao());
+        System.out.println("quantidade-> "+this.p.getQuantidade());
+        System.out.println("valor-> "+this.p.getValor());
     }
     
     public void carregaTabela() throws SQLException {
@@ -131,7 +146,7 @@ public class ListaProdutoController {
         }
         
     }
-    
+    // aqui temos a ação tanto para excluir 
     class AcaoMenuItemExcluir implements ActionListener {
 
         @Override
@@ -163,14 +178,19 @@ public class ListaProdutoController {
             
         }
     }
-    
+    // aqui temos a ação pra redirecionar para a tela de edição do produto
     class AcaoMenuItemAlterar implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("alterar pressionado");
             TelaProduto telaProduto = new TelaProduto();
-            new EditaProdutoController(telaProduto);
+            try {
+                pegaObjetoPelaTabela();
+            } catch (SQLException ex) {
+                Logger.getLogger(ListaProdutoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            new EditaProdutoController(telaProduto, p );
             telaProduto.setLocationRelativeTo(null);
             telaProduto.setVisible(true);
         }
