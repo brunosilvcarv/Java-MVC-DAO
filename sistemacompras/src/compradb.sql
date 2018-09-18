@@ -11,7 +11,7 @@ create table produto(
 procodigo int unsigned not null auto_increment,
 prodesc text,
 proqtd int,
-provalor decimal(7,2),
+provalor double,
 primary key (procodigo)
 ) engine=InnoDB default charset utf8;
 
@@ -27,7 +27,7 @@ create table itemcompra(
 itccomcodigo int unsigned not null,
 itcprocodigo int unsigned not null,
 itcqtd int,
-itcvalprodiacompra decimal(7,2),
+itcvalprodiacompra double,
 foreign key(itccomcodigo) references compra(comcodigo),
 foreign key(itcprocodigo) references produto(procodigo)
 ) engine=InnoDB default charset utf8;
