@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -180,6 +181,10 @@ public class TelaCompra extends javax.swing.JFrame {
         this.btnVoltar.addActionListener(listener);
     }
     
+    public void addClicaProdutoListener(MouseListener listener) {
+        this.TabelaProdutos.addMouseListener(listener);
+    }
+    
     // getters da tabela e campo de texto
     public JTable getTabelaProdutos() {
         return this.TabelaProdutos;
@@ -191,6 +196,11 @@ public class TelaCompra extends javax.swing.JFrame {
     
     public JLabel getValorTotal() {
         return this.valorTotal;
+    }
+    
+    //setter do campo de texto
+    public void setCampoTexto(String texto) {
+        this.areaDeTexo.setText(texto);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

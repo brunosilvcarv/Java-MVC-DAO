@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import model.Produto;
 import view.TableModelProdutos;
 import view.TelaCompra;
-import view.TelaProdutoLista;
 
 /**
  *
@@ -21,33 +20,54 @@ import view.TelaProdutoLista;
 public class AreaCompraController {
     
     
-    TelaCompra view;
+    TelaCompra theView;
     Produto produto;
+    Produto p = new Produto();
+    int linha;
     
     public AreaCompraController(TelaCompra theView) {
-        this.view = theView;
-        view.addBtnAdicionarListener(new AcaoBotaoAdicionar());
-        view.addBtnCalculaListener(new AcaoBotaoAdicionar());
-        view.addBtnLimparListener(new AcaoBotaoLimpar());
-        view.addBtnMinhasComprasListener(new AcaoBotaoMinhasCompras());
-        view.addBtnVoltarListener(new VoltaTelaInicial());
-        view.setVisible(true);
+        this.theView = theView;
+        this.theView.addBtnAdicionarListener(new AcaoBotaoAdicionar());
+        this.theView.addBtnCalculaListener(new AcaoBotaoAdicionar());
+        this.theView.addBtnLimparListener(new AcaoBotaoLimpar());
+        this.theView.addBtnMinhasComprasListener(new AcaoBotaoMinhasCompras());
+        this.theView.addBtnVoltarListener(new VoltaTelaInicial());
+        this.theView.setVisible(true);
     }
     
     public void carregaTabela() throws SQLException {
         ProdutoDAO dao = new ProdutoDAO();
         TableModelProdutos modelo = new TableModelProdutos(dao.consultaProduto(produto));
-        view.getTabelaProdutos().setModel(modelo);
-        view.getTabelaProdutos().setVisible(true);
+        theView.getTabelaProdutos().setModel(modelo);
+        theView.getTabelaProdutos().setVisible(true);
     }
-            
+    
+    public void pegaObjetoDaTabela() throws SQLException {
+        ProdutoDAO dao = new ProdutoDAO();
+        TableModelProdutos modelo = new TableModelProdutos(dao.consultaProduto(produto));
+        linha = theView.getTabelaProdutos().getSelectedRow();
+        produto = modelo.getObjeto(linha);
+        p.setIdProduto(produto.getIdProduto());
+        p.setDescricao(produto.getDescricao());
+        p.setQuantidade(produto.getQuantidade());
+        p.setValor(produto.getValor());
+    }
             
     //------------- classes ----------------------
     class AcaoBotaoAdicionar implements ActionListener{ 
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            System.out.println("adicionando produto ao campo de texto");
+            try {
+                ProdutoDAO dao = new ProdutoDAO();
+                pegaObjetoDaTabela();
+                String texto = p.getDescricao() + " - "
+                        + String.valueOf(p.getQuantidade()) + " - "
+                        + String.valueOf(p.getValor());
+                theView.setCampoTexto(texto);
+            } catch (SQLException ex) {
+            }
         }
     }
     
@@ -79,7 +99,7 @@ public class AreaCompraController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            view.dispose();
+            theView.dispose();
         }
         
     }
