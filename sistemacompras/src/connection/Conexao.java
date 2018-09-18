@@ -18,7 +18,7 @@ public class Conexao {
     public static Connection getConnection() throws SQLException {
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost/compradb",
-                    "root", "");
+                    "root", "root");
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }

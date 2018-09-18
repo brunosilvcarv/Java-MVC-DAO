@@ -100,6 +100,10 @@ public class TelaInicial extends javax.swing.JFrame {
     public void addBotaoAreaProdutoEventListener(ActionListener listener) {
         this.btnAreaProduto.addActionListener(listener);
     }
+    
+    public void addBotaoAreaCompra(ActionListener listener) {
+        this.btnAreaCompra.addActionListener(listener);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAreaCompra;

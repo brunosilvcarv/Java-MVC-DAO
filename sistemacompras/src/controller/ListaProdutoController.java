@@ -41,6 +41,10 @@ public class ListaProdutoController {
         theView.setVisible(true);
     }
     
+    public ListaProdutoController() {
+        
+    }
+    
     public void pegaObjetoPelaTabela() throws SQLException {
         ProdutoDAO dao = new ProdutoDAO();
         //faz a consulta

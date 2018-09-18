@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import view.TelaCompra;
 import view.TelaInicial;
 import view.TelaProdutoLista;
 
@@ -24,6 +25,7 @@ public class InicioController {
     public InicioController(TelaInicial theView){
         this.theView = theView;
         theView.addBotaoAreaProdutoEventListener(new AreaProduto());
+        theView.addBotaoAreaCompra(new AreaCompra());
     }
     
     class AreaProduto implements ActionListener {
@@ -40,6 +42,21 @@ public class InicioController {
             tela.setLocationRelativeTo(null);
             tela.setVisible(true);
         }
-        
+    }
+    
+    class AreaCompra implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            TelaCompra tela = new TelaCompra();
+            AreaCompraController controller = new AreaCompraController(tela);
+            try {
+                controller.carregaTabela();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            tela.setLocationRelativeTo(null);
+            tela.setVisible(true);
+        }
     }
 }
