@@ -53,7 +53,7 @@ public class ProdutoDAO {
             PreparedStatement stmt = conexao.prepareStatement(query);
             stmt.setString(1, p.getDescricao());
             stmt.setInt(2, p.getQuantidade());
-            stmt.setDouble(3, p.getQuantidade());
+            stmt.setDouble(3, p.getValor());
             stmt.setInt(4, p.getIdProduto());
             stmt.execute();
             stmt.close();
