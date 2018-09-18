@@ -16,10 +16,10 @@ import view.TelaProduto;
  */
 public class EditaProdutoController extends AdicionaProdutoController{
     
-    Produto produto;
+    //Produto produto;
     public EditaProdutoController(TelaProduto theView, Produto produto) {
         this.theView = theView;
-        this.produto = produto;
+        //this.produto = produto;
         // settar os campos de texto com os valores do produto selecionado
         theView.getBtnAdicionar().setVisible(false);
         theView.getBtnAlterar().setVisible(true);
