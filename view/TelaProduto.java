@@ -38,7 +38,6 @@ public class TelaProduto extends javax.swing.JFrame {
         campoValor = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,8 +58,6 @@ public class TelaProduto extends javax.swing.JFrame {
 
         btnAlterar.setText("Alterar");
 
-        btnExcluir.setText("Excluir");
-
         btnAdicionar.setText("Adicionar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -80,21 +77,18 @@ public class TelaProduto extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(campoQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                     .addComponent(campoValor)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnAlterar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnExcluir))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(42, 42, 42)
-                                    .addComponent(campoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(42, 42, 42)
+                                .addComponent(campoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(btnVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(205, 205, 205)
-                        .addComponent(btnAdicionar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdicionar)
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(71, 83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,9 +109,7 @@ public class TelaProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(btnAdicionar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAlterar)
-                    .addComponent(btnExcluir))
+                .addComponent(btnAlterar)
                 .addGap(40, 40, 40)
                 .addComponent(btnVoltar)
                 .addGap(27, 27, 27))
@@ -197,9 +189,6 @@ public class TelaProduto extends javax.swing.JFrame {
         return this.btnAlterar;
     }
     
-    public JButton getBtnExcluir() {
-        return this.btnExcluir;
-    }
     
     public JButton getBtnAdicionar() {
         return this.btnAdicionar;
@@ -215,9 +204,6 @@ public class TelaProduto extends javax.swing.JFrame {
         this.btnAlterar.addActionListener(listener);
     }
     
-    public void addBtnExcluirListener(ActionListener listener) {
-        this.btnExcluir.addActionListener(listener);
-    }
     
     public void addBtnVoltar(ActionListener listener) {
         this.btnVoltar.addActionListener(listener);
@@ -227,7 +213,6 @@ public class TelaProduto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField campoProduto;
     private javax.swing.JTextField campoQuantidade;
