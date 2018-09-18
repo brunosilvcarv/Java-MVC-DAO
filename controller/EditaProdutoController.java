@@ -83,12 +83,5 @@ public class EditaProdutoController extends AdicionaProdutoController{
         
     }
     
-    class Voltar implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            theView.dispose();
-        }
-        
-    }
+   
 }
